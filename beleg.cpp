@@ -17,11 +17,11 @@ using namespace std;
 //{{{2
 //vars
 GLuint loadShaders(const char* vertexFilePath,
-	const char* fragmentFilePath,
- 	const char* geometryFilePath,
-	const char* tesscontrolFilePath,
-	const char* tessevaluationFilePath,
-	const char* computeFilePath);
+				   const char* fragmentFilePath,
+ 				   const char* geometryFilePath,
+				   const char* tesscontrolFilePath,
+				   const char* tessevaluationFilePath,
+				   const char* computeFilePath);
 GLint height=100,width=100;
 enum VAO_IDs {Sphere,Pyramid,Cuboid,NumVAOs};
 enum Buffer_IDs {SphereBuffer,PyramidBuffer,CuboidBuffer,NumBuffer};
@@ -66,10 +66,28 @@ void generatePyramid(){
 	glEnableVertexAttribArray(1);
 }
 //{{{2
+void drawPyramid(){
+	glBindVertexArray(VAOs[PyramidBuffer]);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBuffer[PyramidEBuffer]);
+	glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_SHORT, NULL);
+	glDrawElements(GL_TRIANGLE_STRIP, 7, GL_UNSIGNED_SHORT, (const GLvoid*)(5*sizeof(GLushort)));
+}
+//{{{2
+//void generateSphere(){}
+//void drawSphere(){}
+//void generateCuboid(){}
+//void drawCuboid(){}
+//{{{2
 void reshape(int w, int h) {
   	width=w;
   	height=h; 
 }
+//{{{2
+//void display(){}
+//void light(){}
+//void mouse(int mouseX, int mouseY){}
+//void keyboard(unsigned char theKey,  int mouseX, int mouseY){}
+//void init(){}
 //{{{2
 int main(int argc, char** argv){
 	glutInit(&argc, argv);
