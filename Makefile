@@ -11,10 +11,12 @@ OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 TARGET = beleg
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
+	@test -d $(BINDIR) || mkdir -p $(BINDIR)
 	@$(CXX) $(OBJECTS) $(FLAGS) -o $@
 	@echo "Linking complete!"
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+	@test -d $(OBJDIR) || mkdir -p $(OBJDIR)
 	@$(CXX) $(FLAGS) -c $< -o $@
 	@echo "Compiled "$<" successfully!"
 
