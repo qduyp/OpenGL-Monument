@@ -1,16 +1,29 @@
-CC = g++
+CXX = g++
 INCLUDES = -I/usr/include/glm/ -I/usr/include/GL/ 
 LIBS = -lGL -lglut -lGLEW -lfreeimage -lc
-FLAG = -g -Wall ${LIBS} ${INCLUDES}
-SRCS = beleg.cpp LoadShader.cpp
-OBJS = $(subst .cpp,.o,$(SRCS))
-all: beleg
+CFLAGS = -g -Wall
+FLAGS = ${CFLAGS} ${LIBS} ${INCLUDES}
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
+SOURCES := $(wildcard $(SRCDIR)/*.cpp)
+OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+TARGET = beleg
 
-beleg: $(OBJS)
-	${CC} ${FLAG} -o beleg $(OBJS)
+$(BINDIR)/$(TARGET): $(OBJECTS)
+	@$(CXX) $(OBJECTS) $(FLAGS) -o $@
+	@echo "Linking complete!"
 
-%.o: %.cpp
-	${CC} ${FLAG} -c $<
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+	@$(CXX) $(FLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
 
+.PHONY: clean
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJECTS)
+	@echo "Cleanup complete"
+
+.PHONY: remove
+remove: clean
+	$(RM) $(BINDIR)/$(TARGET)
+	@echo "Cleanup complete"
