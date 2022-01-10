@@ -2,10 +2,10 @@
 layout(location = 0) in vec4 vPosition;
 layout(location = 1) in vec4 vColor;
 
-uniform mat4 ModelViewProjection;
-
+uniform mat4 FinalMat;
 out vec4 Color;
+
 void main(){
-	gl_Position = vPosition*ModelViewProjection;
+	gl_Position = vPosition*FinalMat;
 	Color = vColor;
 }
