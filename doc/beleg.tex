@@ -4,7 +4,6 @@
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\graphicspath{ {./images/} }
 \usepackage[a4paper, top=2cm, bottom=2cm, right=2cm, left=2.5cm]{geometry}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -68,8 +67,10 @@
 \maketitle 
 
 \pagebreak
-
+{
+\hypersetup{linkcolor=black}
 \tableofcontents
+}
 
 \pagebreak
 
