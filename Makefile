@@ -28,4 +28,4 @@ clean:
 .PHONY: remove
 remove: clean
 	$(RM) $(BINDIR)/$(TARGET)
-	@echo "Cleanup complete"
+	@echo "Remove complete"
