@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage[a4paper, top=2cm, bottom=2cm, right=2cm, left=2.5cm]{geometry}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+ % Source: https://en.m.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                   % start line enumeration with line 1
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,	                   % sets default tabsize to 4 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfcreator={Creator},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,       % false: boxed links; true: colored links
+    %linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=cyan,         % color of file links
+    urlcolor=magenta        % color of external links
+}
+
+\author{\\ Tan Minh Ho \\ s82053 \\ \\ \\ Prof. Dr.-Ing. habil. Wolfgang Oertel \\ Computergrafik I\\ \\ }
+\title{Belegarbeit - OpenGL}
+
+\begin{document}
+
+\maketitle 
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{Aufgabenstellung}
+
+Schreiben Sie ein Programm in C/C++, das unter Verwendung von OpenGL, Vertex- und Fragment-Shadern folgende Aufgaben realisiert. \\
+
+\subsection{Aufgabe 1}
+Geometrische Objeckte: Erzeugen Sie eine interaktive zeitlich animierte Szenze mit mehreren unterschiedlichen farblichen und texturierten dreidimensionalen geometrischen Objekten. \\
+\subsection{Aufgabe 2}
+Beleuchtung: Beleuchten Sie die Szenze mit verschiedenartigen Lichtquellen so, dass auf den Objekten unterschiedliche Beleuchtungseffekte sichtbar werden. \\
+\subsection{Aufgabe 3}
+Ansicht: Stellen Sie die Szenze gleichzeitig in verschiedenen Ansichten und Projektionen in merheren Viewports des Anzeigefensters dar. \\
+\subsection{Aufgabe 4}
+Programm: Stellen Sie das komplette Programm in Quelltextform als Visual-Studio-C/C++-Projekt und in ausführbarer Form als exe-File derart bereits, dass die Lauffähigkeit unter MS Windows gewährleistet ist.\\
+\subsection{Aufgabe 5}
+Dokumentation: Fertigen Sie eine Systemdokumentation in Form eines pdf-Dokumentes von etwa 10 Seiten an, die Deckblatt, Gliederung, Aufgabenbeschreibung, Lösungsansatz, Lösungsumsetzung, Installations- und Bedienugsanleitung,
+einige Bildschirm-Snapshots, Probleme, Literatur- und Quellenverzeichis enthält. \\
+\subsection{Aufgabe 6}
+Abgabe: Übergeben Sie die Ergebnisse der Aufgaben 4 und 5 zusammengefasst in einem Verzeichnis "$Name_Vorname_Bibliotheksnummer$" an den Lehrenden. Bei Bedarf kann sich eine Abnahme der Belegarbeit mit Demonstration der Lauffähigkeit erforderlich machen. \\
+
+\pagebreak
+
+\section{Installationsanleitung}
+
+Um die Quellcode zu compilieren, müssen OpenGL-Bibliotheken installiert werden. Sie sind 
+
+\begin{itemize}
+	\item GL
+	\item GLU
+	\item GLUT oder FreeGlut
+	\item GLM oder FreeImage
+	\item GLEW oder Glee
+\end{itemize}
+
+In Linux / MacOS kann man einfach \textbf{package manager} \hyperref[sec:pacman]{[1]} verwenden. Nach der Installation lauft das Kommando \textbf{make}. Außerdem gibt es andere Kommandos: \textbf{make clean} und \textbf{make remove}. \\
+In MS Windows verwendet das Programm Visual Studio (oder eine andere IDE) zu compilieren. Und alle oberen Bibliotheken müssen vorher gebunden sein. Beachten: Das Kommando \textbf{make} funktioniert in MS Window nicht. \\
+
+\pagebreak
+
+\section{Lösungsumsetzung}
+
+\subsection{Headerfile}
+\lstinputlisting[firstline=1, lastline=22]{../src/libs/includes.h}
+
+\subsection{Cube}
+\lstinputlisting[firstnumber=1, lastline=91]{../src/cube.cpp}
+
+\subsection{Pyramid}
+\lstinputlisting[firstnumber=1, lastline=76]{../src/pyramid.cpp}
+
+\subsection{Main}
+\lstinputlisting[firstnumber=1, lastline=137]{../src/main.cpp}
+
+\subsection{Limitierungen und Verbesserungsvorschläge}
+\begin{itemize}
+	\item In tiling-Window-Manger zeigt das Programm nur einen Teil der Szenze. Im Moment gibt es keine Lösung.
+	\item Das Programm ist nicht optimiert und kann unter MS Window wegen Bibliotheken nicht laufen.
+\end{itemize}
+
+\section{Literatur und Quellenverzeichnis}
+\begin{itemize}
+	\item Pamcan -Rosetta : \url{wiki.archlinux.org/title/Pacman/Rosetta} \label{sec:pacman} [1]
+	\item Prof. Dr. Wolfgang Oertel: Computergrafik I Vorlesungsmaterial
+	\item OpenGL - Archwiki: \url{wiki.archlinux.org/title/OpenGL}
+\end{itemize}
+\end{document}
