@@ -1,5 +1,7 @@
-#include "libs/cube.h"
-#include "libs/enum.h"
+#include "libs/includes.h"
+
+GLuint VAOs[NumVAOs];
+GLuint VBO, EBO, Texture[4];
 
 void generateCube(){
     glGenVertexArrays(NumVAOs,VAOs);
@@ -55,8 +57,8 @@ void generateCube(){
     BYTE *bitmapBits;
     FREE_IMAGE_FORMAT bitmapFormat=FIF_UNKNOWN;
 
-    bitmapFormat    =FreeImage_GetFileType("Texture/2.jpeg");
-    bitmapData      =FreeImage_Load(bitmapFormat,"Texture/2.jpeg");
+    bitmapFormat    =FreeImage_GetFileType("src/Texture/2.jpeg");
+    bitmapData      =FreeImage_Load(bitmapFormat,"src/Texture/2.jpeg");
     imgH            =FreeImage_GetHeight(bitmapData);
     imgW            =FreeImage_GetWidth(bitmapData);
     bitmapBits      =FreeImage_GetBits(bitmapData);
@@ -67,7 +69,6 @@ void generateCube(){
     glTexParameteri(GL_TEXTURE_2D,GL_WRAP_BORDER,GL_REPEAT);
     FreeImage_Unload(bitmapData);
     glBindTexture(GL_TEXTURE_2D,Texture[1]);
-
 
     glGenBuffers(1,&VBO);
     glBindBuffer(GL_ARRAY_BUFFER,VBO);
