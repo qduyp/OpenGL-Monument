@@ -96,21 +96,38 @@ Abgabe: Übergeben Sie die Ergebnisse der Aufgaben 4 und 5 zusammengefasst in ei
 
 \section{Installationsanleitung}
 
-Um die Quellcode zu compilieren, müssen OpenGL-Bibliotheken installiert werden. Sie sind 
+\subsection{Compiler und Bibliotheken}
+Um die Quellcode zu compilieren, müssen OpenGL-Bibliotheken installiert oder heruntergeladen werden. Sie sind 
 
 \begin{itemize}
-	\item GL
+	\item GL 
 	\item GLU
 	\item GLUT oder FreeGlut
 	\item GLM oder FreeImage
 	\item GLEW oder Glee
 \end{itemize}
 
-In Linux / MacOS kann man einfach \textbf{package manager} \hyperref[sec:pacman]{[1]} verwenden. Nach der Installation lauft das Kommando \textbf{make}. Außerdem gibt es andere Kommandos: \textbf{make clean} und \textbf{make remove}. \\
-In MS Windows verwendet das Programm Visual Studio (oder eine andere IDE) zu compilieren. Und alle oberen Bibliotheken müssen vorher gebunden sein. Beachten: Das Kommando \textbf{make} funktioniert in MS Window nicht. \\
+In Linux kann man einfach \textbf{package manager} \hyperref[sec:pacman]{[1]} verwenden. Außerdem braucht das Programm ein Compiler, der gcc/g++ oder clang/clang++ \hyperref[sec:comp]{[2]} ist.  \\
+Bemerkung:
+\begin{itemize}
+	\item Der Name der Paketen (Bibliotheken) in Linux sind: mesa, freeglut, glm, glew, glu und freeimage.
+	\item Diese Namen können unter verschiedenen Distrobutions ungleich sein.
+\end{itemize}
 
+\subsection{Makefile}
+\lstinputlisting[firstline=1, lastline=4]{../Makefile}
+In Makefile sind diese Zeilen veränderlich. Die erste Zeile ist mit welchem Compiler wird das Quellcode compiliert. 
+INCLUDES enthält \underline{/path/to/opengl/library} und LIBS die Liste der Bibliotheken, mit der der Compiler verwendet. 
+CFLAGS ist einfach die Liste der anderen Flags für den Compiler und kann leer sein. \\
+Danach lauft das Kommando: \textbf{make}, um das Project zu compilieren. \textbf{make clean} oder \textbf{make remove} löscht die Object-Dateien und Binary-Datei. \\
+
+\subsection{Bedienugsanleitung}
 Die Texturen und alle Quellcode sowie Headerfile und Shaders Dateien müssen in dem Verzeichnis "src" gespeichert werden. 
 Headerfile findet unter "src/libs", Quellcode unter "src", Texturen "src/Texture" und Shaders "src/Shader". \\
+
+\subsection{Alternative}
+Visual Studio oder eine andere IDE kann verwendet werden, um das Programm auszuführen. Die Hauptbibliothek muss installiert / heruntergeladen werden und im IDE durch Compiler / Linker gebunden sein.
+
 \pagebreak
 
 \section{Lösungsumsetzung}
@@ -136,6 +153,7 @@ Headerfile findet unter "src/libs", Quellcode unter "src", Texturen "src/Texture
 \section{Literatur und Quellenverzeichnis}
 \begin{itemize}
 	\item Pamcan -Rosetta : \url{wiki.archlinux.org/title/Pacman/Rosetta} \label{sec:pacman} [1]
+	\item List of compilers : \url{en.wikipedia.org/wiki/List_of_Compilers#C++_compilers} \label{sec:comp} [2]
 	\item Prof. Dr. Wolfgang Oertel: Computergrafik I Vorlesungsmaterial
 	\item OpenGL - Archwiki: \url{wiki.archlinux.org/title/OpenGL}
 \end{itemize}
