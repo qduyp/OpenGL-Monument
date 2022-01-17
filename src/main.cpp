@@ -24,7 +24,7 @@ void init(){
 
 void display(){
 	glClearColor(1.0,1.0,1.0,1.0);
-    glClear(GL_COLOR_BUFFER_BIT  );
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_TEST_BUFFER );
     glViewport(0, height/2, width/2, height/2);
     vec3 cameraPos = vec3(side, high, depth);
     vec3 cameraFront = vec3(rota,0.0,-1.0);
