@@ -1,4 +1,3 @@
-
 #version 450 core  // 420, 330 core , compatibility
 
 in vec2 vs_tex_coord;
