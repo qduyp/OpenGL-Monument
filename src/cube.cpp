@@ -48,28 +48,6 @@ void generateCube()
 							  16,17,18,19,
 							  20,21,22,23};
 
-	//glGenTextures(1,Texture);
-	//glBindTexture(GL_TEXTURE_2D,Texture[1]);
-
-	//FreeImage_Initialise(TRUE);
-	//FIBITMAP *bitmapData;
-	//int imgH, imgW;
-	//BYTE *bitmapBits;
-	//FREE_IMAGE_FORMAT bitmapFormat=FIF_UNKNOWN;
-
-	//bitmapFormat    =FreeImage_GetFileType("src/Texture/3.jpeg");
-	//bitmapData      =FreeImage_Load(bitmapFormat,"src/Texture/3.jpeg");
-	//imgH            =FreeImage_GetHeight(bitmapData);
-	//imgW            =FreeImage_GetWidth(bitmapData);
-	//bitmapBits      =FreeImage_GetBits(bitmapData);
-
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imgW, imgH, 0, GL_BGR, GL_UNSIGNED_BYTE, bitmapBits);
-	//glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-	//glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-	//glTexParameteri(GL_TEXTURE_2D,GL_WRAP_BORDER,GL_REPEAT);
-	//FreeImage_Unload(bitmapData);
-	//glBindTexture(GL_TEXTURE_2D,Texture[1]);
-
 	glGenBuffers(1,&VBO);
 	glBindBuffer(GL_ARRAY_BUFFER,VBO);
 	glBufferData(GL_ARRAY_BUFFER,sizeof(CubeVertices),CubeVertices,GL_STATIC_DRAW);

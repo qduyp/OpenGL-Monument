@@ -20,16 +20,10 @@ void init()
 	program  = loadShaders("src/Shader/Dreiecke.vs", "src/Shader/Dreiecke.fs", "", "", "", "");
 	glUseProgram(program);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
 	glEnable(GL_CULL_FACE);
 	glFrontFace(GL_CW);
 	glCullFace(GL_BACK);
 	glEnable(GL_COLOR_MATERIAL);
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT); // Adjust ambient
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_EMISSION);
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_SPECULAR);
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
-	//glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 80.0);
 }
 
 void display()
@@ -39,9 +33,10 @@ void display()
 	vec3 diffuseColor = vec3(1.0f,1.0f,1.0f);
 	vec3 specular = vec3(1.0f,1.0f,1.0f);
 
-	vec3 MACO = vec3(1.0f,0.5f,0.31f);
-	vec3 MDCO = vec3(0.0f, 0.50980392f, 0.50980392f);
-	vec3 MSCO = vec3(0.50196078f, 0.50196078f, 0.50196078f);
+	vec3 MACO = vec3(0.0215f, 0.1745f, 0.0215f);
+	vec3 MDCO = vec3(0.07568f, 0.61424f, 0.07568f);
+	vec3 MSCO = vec3(0.633f, 0.727811f, 0.633f);
+	float shiniCO = 0.6f;
 
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -65,11 +60,14 @@ void display()
 	glUniform3fv(locMDI,1,glm::value_ptr(MDCO));
 	GLuint locMSP =  glGetUniformLocation(program, "material.specular");
 	glUniform3fv(locMSP,1,glm::value_ptr(MSCO));
+	GLuint locMSH =  glGetUniformLocation(program, "material.shininess");
+	glUniform3fv(locMSH,1,&shiniCO);
 
+	GLuint fTT =  glGetUniformLocation(program, "flagTexture");
+	glUniform1i(fTT,0);
 	drawBoden();
 	drawTetra();
-	glDeleteTextures(1,&Texture[0]);
-	glDeleteTextures(1,&Texture[1]);
+	glUniform1i(fTT,1);
 	drawCube();
 	glutSwapBuffers();
 	glFlush();
@@ -95,13 +93,10 @@ void keyboard(unsigned char theKey, int mouseX, int mouseY)
 	case 's':
 		break;
 	case 'd':
-		side-=0.25;
 		break;
 	case 'h':
-		high-=0.25;
 		break;
 	case 'l':
-		high+=0.25;
 		break;
 	case 'q':
 		exit(0);
