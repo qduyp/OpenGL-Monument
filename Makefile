@@ -1,6 +1,6 @@
 CXX = g++
 INCLUDES = -I/usr/include/glm/ -I/usr/include/GL/ 
-LIBS = -lGL -lglut -lGLEW -lfreeimage -lc
+LIBS = -lGL -lglut -lGLEW -lfreeimage
 CFLAGS = -g -Wall
 FLAGS = ${CFLAGS} ${LIBS} ${INCLUDES}
 SRCDIR = src
