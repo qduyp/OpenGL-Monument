@@ -8,6 +8,11 @@ GLuint program;
 GLuint VAOs[NumVAOs];
 GLuint VBO, Texture[2];
 GLfloat r=1.0f,g=1.0f,b=1.0f;
+// Material
+vec3 MACO = vec3(r,g,b);
+vec3 MDCO = vec3(r,g,b);
+vec3 MSCO = vec3(0.633f, 0.727811f, 0.633f);
+float shiniCO = 0.6f;
 GLuint loadShaders(const char* vertexFilePath,
 				   const char* fragmentFilePath,
 				   const char* geometryFilePath,
@@ -28,32 +33,40 @@ void init()
 
 void display()
 {
-	vec3 lightLO = vec3(0,0,0);
-	vec3 ambientColor = vec3(1.0f,1.0f,1.0f);
-	vec3 diffuseColor = vec3(1.0f,1.0f,1.0f);
-	vec3 specular = vec3(1.0f,1.0f,1.0f);
-
-	vec3 MACO = vec3(1,1,1);
-	vec3 MDCO = vec3(1,1,1);
-	vec3 MSCO = vec3(0.633f, 0.727811f, 0.633f);
-	float shiniCO = 0.6f;
-
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+	// Direct light
+	vec3 lightLO = vec3(3,1.5,2.5);
+	vec3 ambientColor = vec3(0.1f,0.1f,0.15f);
+	vec3 diffuseColor = vec3(0.0f,0.0f,1.0f);
+	vec3 specular = vec3(1.0f,1.0f,1.0f);
+
 	mat4 View = glm::lookAt(vec3(3,3,3),vec3(0,0,0),vec3(0,1,0));
 	mat4 Projection = glm::perspective(120.0f,1.0f,0.1f,10.0f);
 	mat4 ModelViewProjection = Projection * View;
 	GLuint locFinal =  glGetUniformLocation(program, "ModelViewProjection");
 	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
-	GLuint locLO =  glGetUniformLocation(program, "light.location");
+	GLuint locLO =  glGetUniformLocation(program, "light[0].location");
 	glUniform3fv(locLO,1,glm::value_ptr(lightLO));
-	GLuint locLA =  glGetUniformLocation(program, "light.ambient");
+	GLuint locLA =  glGetUniformLocation(program, "light[0].ambient");
 	glUniform3fv(locLA,1,glm::value_ptr(ambientColor));
-	GLuint locDI =  glGetUniformLocation(program, "light.diffuse");
+	GLuint locDI =  glGetUniformLocation(program, "light[0].diffuse");
 	glUniform3fv(locDI,1,glm::value_ptr(diffuseColor));
-	GLuint locSP =  glGetUniformLocation(program, "light.specular");
+	GLuint locSP =  glGetUniformLocation(program, "light[0].specular");
 	glUniform3fv(locSP,1,glm::value_ptr(specular));
 
+	// Spot light
+	glUniform3fv(glGetUniformLocation(program, "light[1].location"),1,
+				 glm::value_ptr(vec3(1,3,0)));
+	glUniform3fv(glGetUniformLocation(program, "light[1].ambient"),1,
+				 glm::value_ptr(vec3(0.3f,0.3f,0.3f)));
+	glUniform3fv(glGetUniformLocation(program, "light[1].diffuse"),1,
+				 glm::value_ptr(vec3(1.0f,0.0f,0.0f)));
+	glUniform3fv(glGetUniformLocation(program, "light[1].specular"),1,
+				 glm::value_ptr(vec3(1,1,1)));
+
+	// Material
 	GLuint locMAB =  glGetUniformLocation(program, "material.ambient");
 	glUniform3fv(locMAB,1,glm::value_ptr(MACO));
 	GLuint locMDI =  glGetUniformLocation(program, "material.diffuse");
@@ -63,8 +76,9 @@ void display()
 	GLuint locMSH =  glGetUniformLocation(program, "material.shininess");
 	glUniform3fv(locMSH,1,&shiniCO);
 
+	// Draw stuff
 	GLuint fTT =  glGetUniformLocation(program, "flagTexture");
-	glUniform1i(fTT,0);
+	glUniform1i(fTT,0); // Determine wherether or not to have a texture
 	drawBoden();
 	drawTetra();
 	glUniform1i(fTT,1);
@@ -90,17 +104,14 @@ void keyboard(unsigned char theKey, int mouseX, int mouseY)
 	switch (theKey)
 	{
 	case 'a':
-		r=0.078f;
-		g=0.0f;
-		b=0.567f;
+		r=1.0f;
+		g=1.0f;
+		b=1.0f;
 		break;
 	case 's':
-		break;
-	case 'd':
-		break;
-	case 'h':
-		break;
-	case 'l':
+		r=0.145f;
+		g=0.76f;
+		b=0.05f;
 		break;
 	case 'q':
 		exit(0);

@@ -57,8 +57,6 @@ void generateCube()
 
 	glEnableVertexAttribArray(vPosition);
 	glVertexAttribPointer(vPosition,3,GL_FLOAT,GL_FALSE,8*sizeof(float),0);
-	//glEnableVertexAttribArray(vColor);
-	//glVertexAttribPointer(vColor, 3, GL_FLOAT, GL_FALSE, 8*sizeof(float), (void*)(3* sizeof(float)));
 	glEnableVertexAttribArray(vTexture);
 	glVertexAttribPointer(vTexture,2,GL_FLOAT,GL_FALSE,8*sizeof(float),(void*)(3*sizeof(float)));
 	glEnableVertexAttribArray(vNormal);
