@@ -45,7 +45,7 @@ void main()
 	vec3 result = ambient + diffuse + specular;
 	if (flagTexture == 1)
 	{
-		fColor = vec4(result,1.0);
+		fColor = vec4(result,1.0) * outColor;
 	} 
 	else
 	{

@@ -7,7 +7,7 @@ GLint height,width;
 GLuint program;
 GLuint VAOs[NumVAOs];
 GLuint VBO, Texture[2];
-GLfloat depth = 3.0, high =0.0,side, lighpos, rota, angle, radius=10.0;
+GLfloat r=1.0f,g=1.0f,b=1.0f;
 GLuint loadShaders(const char* vertexFilePath,
 				   const char* fragmentFilePath,
 				   const char* geometryFilePath,
@@ -33,8 +33,8 @@ void display()
 	vec3 diffuseColor = vec3(1.0f,1.0f,1.0f);
 	vec3 specular = vec3(1.0f,1.0f,1.0f);
 
-	vec3 MACO = vec3(0.0215f, 0.1745f, 0.0215f);
-	vec3 MDCO = vec3(0.07568f, 0.61424f, 0.07568f);
+	vec3 MACO = vec3(1,1,1);
+	vec3 MDCO = vec3(1,1,1);
 	vec3 MSCO = vec3(0.633f, 0.727811f, 0.633f);
 	float shiniCO = 0.6f;
 
@@ -68,6 +68,7 @@ void display()
 	drawBoden();
 	drawTetra();
 	glUniform1i(fTT,1);
+	glVertexAttrib3f(vColor,r,g,b);
 	drawCube();
 	glutSwapBuffers();
 	glFlush();
@@ -89,6 +90,9 @@ void keyboard(unsigned char theKey, int mouseX, int mouseY)
 	switch (theKey)
 	{
 	case 'a':
+		r=0.078f;
+		g=0.0f;
+		b=0.567f;
 		break;
 	case 's':
 		break;

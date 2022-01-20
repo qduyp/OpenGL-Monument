@@ -18,4 +18,5 @@ void main()
 	Normal	     = mat3(transpose(inverse(Model)))* vNormal;	
 	vs_tex_coord = vTexture;
  	gl_Position  = ModelViewProjection*vPosition;
+	outColor 	 = vColor;
 }
