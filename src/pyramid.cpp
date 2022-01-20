@@ -43,8 +43,8 @@ void generatePyramid(){
     BYTE *bitmapBits;
     FREE_IMAGE_FORMAT bitmapFormat=FIF_UNKNOWN;
 
-    bitmapFormat    =FreeImage_GetFileType("src/Texture/3.jpeg");
-    bitmapData      =FreeImage_Load(bitmapFormat,"src/Texture/3.jpeg");
+    bitmapFormat    =FreeImage_GetFileType("Texture/3.jpeg");
+    bitmapData      =FreeImage_Load(bitmapFormat,"Texture/3.jpeg");
     imgH            =FreeImage_GetHeight(bitmapData);
     imgW            =FreeImage_GetWidth(bitmapData);
     bitmapBits      =FreeImage_GetBits(bitmapData);
