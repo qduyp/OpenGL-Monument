@@ -104,6 +104,28 @@ void display()
 	glUniform1i(fTT,1);
 	drawCube();
 
+	glViewport(0,0,width/2,height/2);
+	View = glm::lookAt(vec3(0,3,0),vec3(0,2,0),vec3(1,0,0));
+	ModelViewProjection = Projection * View * Trans * Scale;
+	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
+	glUniform1i(fTT,0);
+	drawBoden();
+	drawPyramid();
+	drawTetra();
+	glUniform1i(fTT,1);
+	drawCube();
+
+	glViewport(width/2,0,width/2,height/2);
+	View = glm::lookAt(vec3(3,0,0),vec3(2,0,0),vec3(0,1,0));
+	ModelViewProjection = Projection * View * Trans * Scale;
+	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
+	glUniform1i(fTT,0);
+	drawBoden();
+	drawPyramid();
+	drawTetra();
+	glUniform1i(fTT,1);
+	drawCube();
+
 	glutSwapBuffers();
 	glFlush();
 	angle+=0.05;
