@@ -30,8 +30,9 @@ void generateTetra()
 	BYTE *bitmapBits;
 	FREE_IMAGE_FORMAT bitmapFormat=FIF_UNKNOWN;
 
-	bitmapFormat    =FreeImage_GetFileType("./Texture/1.jpeg");
-	bitmapData      =FreeImage_Load(bitmapFormat,"./Texture/1.jpeg");
+	bitmapFormat    =FreeImage_GetFileType("Texture/1.jpeg");
+	bitmapData      =FreeImage_Load(bitmapFormat,"Texture/1.jpeg");
+
 	imgH            =FreeImage_GetHeight(bitmapData);
 	imgW            =FreeImage_GetWidth(bitmapData);
 	bitmapBits      =FreeImage_GetBits(bitmapData);
