@@ -35,7 +35,7 @@ void generatePyramid(){
                                12,13,14,
                                15,16,17};
     glGenTextures(1,Texture);
-    glBindTexture(GL_TEXTURE_2D,Texture[0]);
+    glBindTexture(GL_TEXTURE_2D,Texture[2]);
 
     FreeImage_Initialise(TRUE);
     FIBITMAP *bitmapData;
@@ -43,8 +43,8 @@ void generatePyramid(){
     BYTE *bitmapBits;
     FREE_IMAGE_FORMAT bitmapFormat=FIF_UNKNOWN;
 
-    bitmapFormat    =FreeImage_GetFileType("src/Texture/3.jpeg");
-    bitmapData      =FreeImage_Load(bitmapFormat,"src/Texture/3.jpeg");
+    bitmapFormat    =FreeImage_GetFileType("Texture/3.jpeg");
+    bitmapData      =FreeImage_Load(bitmapFormat,"Texture/3.jpeg");
     imgH            =FreeImage_GetHeight(bitmapData);
     imgW            =FreeImage_GetWidth(bitmapData);
     bitmapBits      =FreeImage_GetBits(bitmapData);
@@ -54,6 +54,8 @@ void generatePyramid(){
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D,GL_WRAP_BORDER,GL_REPEAT);
     FreeImage_Unload(bitmapData);
+    glBindTexture(GL_TEXTURE_2D, Texture[2]);
+
 
     glGenBuffers(1,&VBO);
     glBindBuffer(GL_ARRAY_BUFFER,VBO);

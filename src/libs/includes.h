@@ -8,13 +8,12 @@
 #include <freeglut.h>
 #include <FreeImage.h>
 #include <gtc/matrix_transform.hpp>
-#define GLM_ENABLE_EXPERIMENTAL
 
 enum VAO_IDs {Boden, Pyramid, Tetra, Cube, NumVAOs};
 enum Attrib_IDs {vPosition, vColor, vTexture, vNormal};
 
 extern GLuint VAOs[NumVAOs];
-extern GLuint VBO, EBO, Texture[2];
+extern GLuint VBO, EBO, Texture[3];
 
 void generateBoden();
 void drawBoden();

@@ -6,7 +6,7 @@ using glm::vec3;
 GLint height,width;
 GLuint program;
 GLuint VAOs[NumVAOs];
-GLuint VBO, Texture[2];
+GLuint VBO, Texture[3];
 GLfloat r=1.0f,g=1.0f,b=1.0f,angle;
 // Material
 vec3 MACO = vec3(1.0f,0.5f,0.31f);
@@ -22,13 +22,13 @@ GLuint loadShaders(const char* vertexFilePath,
 
 void init()
 {
-	program  = loadShaders("src/Shader/Dreiecke.vs", "src/Shader/Dreiecke.fs", "", "", "", "");
+	program  = loadShaders("Shader/Dreiecke.vs", "Shader/Dreiecke.fs", "", "", "", "");
 	glUseProgram(program);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glFrontFace(GL_CW);
 	glCullFace(GL_BACK);
-	glEnable(GL_COLOR_MATERIAL);
+	//glEnable(GL_COLOR_MATERIAL);
 }
 
 void display()
@@ -39,8 +39,8 @@ void display()
 
 	// Direct light
 	vec3 lightLO = vec3(3,1.5,2.5);
-	vec3 ambientColor = vec3(0.1f,0.1f,0.15f);
-	vec3 diffuseColor = vec3(0.0f,0.0f,1.0f);
+	vec3 ambientColor = vec3(0.2f,0.2f,0.2f);
+	vec3 diffuseColor = vec3(1.0f,1.0f,1.0f);
 	vec3 specular = vec3(1.0f,1.0f,1.0f);
 
 	mat4 Trans = glm::translate(mat4(1.0),vec3(0.15,0.25,0.6));
@@ -65,7 +65,7 @@ void display()
 	glUniform3fv(glGetUniformLocation(program, "light[1].ambient"),1,
 				 glm::value_ptr(vec3(0.3f,0.3f,0.3f)));
 	glUniform3fv(glGetUniformLocation(program, "light[1].diffuse"),1,
-				 glm::value_ptr(vec3(1.0f,0.0f,0.0f)));
+				 glm::value_ptr(vec3(1.0f,1.0f,1.0f)));
 	glUniform3fv(glGetUniformLocation(program, "light[1].specular"),1,
 				 glm::value_ptr(vec3(1,1,1)));
 
@@ -84,13 +84,13 @@ void display()
 	glUniform1i(fTT,0); // Determine wherether or not to have a texture
 	drawBoden();
 	drawPyramid();
-	glVertexAttrib3f(vColor,r,g,b);
 	Trans = glm::translate(mat4(1.0),vec3(0.3,0.6,0.19));
 	mat4 Rotate = glm::rotate(Trans,angle,vec3(0,1,0));
-	ModelViewProjection = Projection * View * Trans * Rotate;
+	ModelViewProjection = Projection * View  * Rotate;
 	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
 	drawTetra();
 	glUniform1i(fTT,1);
+	glVertexAttrib3f(vColor, r, g, b);
 	drawCube();
 
 	glViewport(width/2,height/2,width/2,height/2);
