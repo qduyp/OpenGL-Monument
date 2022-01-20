@@ -7,12 +7,12 @@ GLint height,width;
 GLuint program;
 GLuint VAOs[NumVAOs];
 GLuint VBO, Texture[2];
-GLfloat r=1.0f,g=1.0f,b=1.0f;
+GLfloat r=1.0f,g=1.0f,b=1.0f,angle;
 // Material
-vec3 MACO = vec3(r,g,b);
-vec3 MDCO = vec3(r,g,b);
+vec3 MACO = vec3(1.0f,0.5f,0.31f);
+vec3 MDCO = vec3(1.0f,0.5f,0.31f);
 vec3 MSCO = vec3(0.633f, 0.727811f, 0.633f);
-float shiniCO = 0.6f;
+float shiniCO = 32.0f;
 GLuint loadShaders(const char* vertexFilePath,
 				   const char* fragmentFilePath,
 				   const char* geometryFilePath,
@@ -35,6 +35,7 @@ void display()
 {
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glViewport(0,height/2,width/2,height/2);
 
 	// Direct light
 	vec3 lightLO = vec3(3,1.5,2.5);
@@ -42,9 +43,11 @@ void display()
 	vec3 diffuseColor = vec3(0.0f,0.0f,1.0f);
 	vec3 specular = vec3(1.0f,1.0f,1.0f);
 
+	mat4 Trans = glm::translate(mat4(1.0),vec3(0.15,0.25,0.6));
 	mat4 View = glm::lookAt(vec3(3,3,3),vec3(0,0,0),vec3(0,1,0));
 	mat4 Projection = glm::perspective(120.0f,1.0f,0.1f,10.0f);
-	mat4 ModelViewProjection = Projection * View;
+	mat4 Scale = glm::scale(vec3(0.5,0.5,0.5));
+	mat4 ModelViewProjection = Projection * View * Trans * Scale;
 	GLuint locFinal =  glGetUniformLocation(program, "ModelViewProjection");
 	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
 	GLuint locLO =  glGetUniformLocation(program, "light[0].location");
@@ -80,12 +83,30 @@ void display()
 	GLuint fTT =  glGetUniformLocation(program, "flagTexture");
 	glUniform1i(fTT,0); // Determine wherether or not to have a texture
 	drawBoden();
+	drawPyramid();
+	glVertexAttrib3f(vColor,r,g,b);
+	Trans = glm::translate(mat4(1.0),vec3(0.3,0.6,0.19));
+	mat4 Rotate = glm::rotate(Trans,angle,vec3(0,1,0));
+	ModelViewProjection = Projection * View * Trans * Rotate;
+	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
 	drawTetra();
 	glUniform1i(fTT,1);
-	glVertexAttrib3f(vColor,r,g,b);
 	drawCube();
+
+	glViewport(width/2,height/2,width/2,height/2);
+	View = glm::lookAt(vec3(0,0,3),vec3(0,0,2),vec3(0,1,0));
+	ModelViewProjection = Projection * View * Trans * Scale;
+	glUniformMatrix4fv(locFinal,1,GL_FALSE,&ModelViewProjection[0][0]);
+	glUniform1i(fTT,0);
+	drawBoden();
+	drawPyramid();
+	drawTetra();
+	glUniform1i(fTT,1);
+	drawCube();
+
 	glutSwapBuffers();
 	glFlush();
+	angle+=0.05;
 }
 
 void reshape(int w, int h)

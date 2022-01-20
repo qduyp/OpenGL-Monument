@@ -1,0 +1,52 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/silentflick/Documents/OpenGL-Monument/src/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+Attrib_IDs	libs/includes.h	/^enum Attrib_IDs {vPosition, vColor, vTexture, vNormal};$/;"	g
+Boden	libs/includes.h	/^enum VAO_IDs {Boden, Tetra, Cube, NumVAOs};$/;"	e	enum:VAO_IDs
+Cube	libs/includes.h	/^enum VAO_IDs {Boden, Tetra, Cube, NumVAOs};$/;"	e	enum:VAO_IDs
+EBO	cube.cpp	/^GLuint EBO;$/;"	v	typeref:typename:GLuint
+GLM_ENABLE_EXPERIMENTAL	libs/includes.h	/^#define GLM_ENABLE_EXPERIMENTAL$/;"	d
+MACO	main.cpp	/^vec3 MACO = vec3(r,g,b);$/;"	v	typeref:typename:vec3
+MDCO	main.cpp	/^vec3 MDCO = vec3(r,g,b);$/;"	v	typeref:typename:vec3
+MSCO	main.cpp	/^vec3 MSCO = vec3(0.633f, 0.727811f, 0.633f);$/;"	v	typeref:typename:vec3
+NumVAOs	libs/includes.h	/^enum VAO_IDs {Boden, Tetra, Cube, NumVAOs};$/;"	e	enum:VAO_IDs
+Tetra	libs/includes.h	/^enum VAO_IDs {Boden, Tetra, Cube, NumVAOs};$/;"	e	enum:VAO_IDs
+Texture	main.cpp	/^GLuint VBO, Texture[2];$/;"	v	typeref:typename:GLuint[2]
+VAO_IDs	libs/includes.h	/^enum VAO_IDs {Boden, Tetra, Cube, NumVAOs};$/;"	g
+VAOs	main.cpp	/^GLuint VAOs[NumVAOs];$/;"	v	typeref:typename:GLuint[]
+VBO	main.cpp	/^GLuint VBO, Texture[2];$/;"	v	typeref:typename:GLuint
+angle	main.cpp	/^GLfloat r=1.0f,g=1.0f,b=1.0f,angle;$/;"	v	typeref:typename:GLfloat
+b	main.cpp	/^GLfloat r=1.0f,g=1.0f,b=1.0f,angle;$/;"	v	typeref:typename:GLfloat
+display	main.cpp	/^void display()$/;"	f	typeref:typename:void
+drawBoden	boden.cpp	/^void drawBoden()$/;"	f	typeref:typename:void
+drawCube	cube.cpp	/^void drawCube()$/;"	f	typeref:typename:void
+drawPyramid	pyramid.cpp	/^void drawPyramid(){$/;"	f	typeref:typename:void
+drawTetra	tetra.cpp	/^void drawTetra()$/;"	f	typeref:typename:void
+g	main.cpp	/^GLfloat r=1.0f,g=1.0f,b=1.0f,angle;$/;"	v	typeref:typename:GLfloat
+generateBoden	boden.cpp	/^void generateBoden()$/;"	f	typeref:typename:void
+generateCube	cube.cpp	/^void generateCube()$/;"	f	typeref:typename:void
+generatePyramid	pyramid.cpp	/^void generatePyramid(){$/;"	f	typeref:typename:void
+generateTetra	tetra.cpp	/^void generateTetra()$/;"	f	typeref:typename:void
+height	main.cpp	/^GLint height,width;$/;"	v	typeref:typename:GLint
+init	main.cpp	/^void init()$/;"	f	typeref:typename:void
+keyboard	main.cpp	/^void keyboard(unsigned char theKey, int mouseX, int mouseY)$/;"	f	typeref:typename:void
+loadShaders	LoadShader.cpp	/^GLuint loadShaders(const char* vertexFilePath, const char* fragmentFilePath,$/;"	f	typeref:typename:GLuint
+main	main.cpp	/^int main(int argc, char** argv)$/;"	f	typeref:typename:int
+program	main.cpp	/^GLuint program;$/;"	v	typeref:typename:GLuint
+r	main.cpp	/^GLfloat r=1.0f,g=1.0f,b=1.0f,angle;$/;"	v	typeref:typename:GLfloat
+reshape	main.cpp	/^void reshape(int w, int h)$/;"	f	typeref:typename:void
+shiniCO	main.cpp	/^float shiniCO = 0.6f;$/;"	v	typeref:typename:float
+timer	main.cpp	/^void timer(int value)$/;"	f	typeref:typename:void
+vColor	libs/includes.h	/^enum Attrib_IDs {vPosition, vColor, vTexture, vNormal};$/;"	e	enum:Attrib_IDs
+vNormal	libs/includes.h	/^enum Attrib_IDs {vPosition, vColor, vTexture, vNormal};$/;"	e	enum:Attrib_IDs
+vPosition	libs/includes.h	/^enum Attrib_IDs {vPosition, vColor, vTexture, vNormal};$/;"	e	enum:Attrib_IDs
+vTexture	libs/includes.h	/^enum Attrib_IDs {vPosition, vColor, vTexture, vNormal};$/;"	e	enum:Attrib_IDs
+width	main.cpp	/^GLint height,width;$/;"	v	typeref:typename:GLint
